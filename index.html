@@ -319,10 +319,12 @@
             <p>Share your business details and we’ll follow up with a practical plan for your website and business setup.</p>
             <p style="margin-top: 0.9rem;"><strong>Email:</strong> saiddalmazroei88@gmail.com</p>
             <p><strong>WhatsApp for booking:</strong> 0547867882</p>
-            <p style="margin-top: 0.9rem;">You keep the revenue while AI helps support the business operations.</p>
+            <p style="margin-top: 0.9rem;">The form now sends automatically to your email address when submitted.</p>
           </div>
 
-          <form id="contactForm" action="mailto:saiddalmazroei88@gmail.com" method="POST" enctype="text/plain">
+          <form id="contactForm" action="https://formsubmit.co/saiddalmazroei88@gmail.com" method="POST" target="_blank">
+            <input type="hidden" name="_subject" value="SmartSites AI Booking Request" />
+            <input type="hidden" name="_captcha" value="false" />
             <label>
               Business name
               <input type="text" name="businessName" placeholder="Your business name" required />
@@ -361,21 +363,8 @@
       const form = document.getElementById("contactForm");
       const formNote = document.getElementById("formNote");
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const data = new FormData(form);
-        const subject = encodeURIComponent("SmartSites AI Booking Request");
-        const body = encodeURIComponent(
-          `Business Name: ${data.get("businessName")}
-Email: ${data.get("email")}
-Business Type: ${data.get("businessType")}
-Project Details: ${data.get("details")}`
-        );
-
-        const mailto = `mailto:saiddalmazroei88@gmail.com?subject=${subject}&body=${body}`;
-        window.location.href = mailto;
-        formNote.textContent = "Your email client should open so you can send the request to saiddalmazroei88@gmail.com.";
+      form.addEventListener("submit", function () {
+        formNote.textContent = "Sending your request to saiddalmazroei88@gmail.com...";
       });
     </script>
   </body>
