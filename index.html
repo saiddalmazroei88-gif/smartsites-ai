@@ -180,7 +180,7 @@
         <div class="container hero-grid">
           <div>
             <h1>AI-Powered Websites for Small Businesses</h1>
-            <p>We build modern, mobile-friendly websites in 24 hours with a premium, polished experience that helps your business grow.</p>
+            <p>We build modern, mobile-friendly websites in 24 hours while AI helps run the business operations and you keep the revenue.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact">Get Your Website</a>
               <a class="btn btn-secondary" href="#portfolio">See Our Work</a>
@@ -316,13 +316,13 @@
         <div class="container contact-wrap">
           <div class="contact-box">
             <h2>Let’s build something polished</h2>
-            <p>Share your business details and we’ll follow up with a practical plan for your website.</p>
+            <p>Share your business details and we’ll follow up with a practical plan for your website and business setup.</p>
             <p style="margin-top: 0.9rem;"><strong>Email:</strong> saiddalmazroei88@gmail.com</p>
             <p><strong>WhatsApp for booking:</strong> 0547867882</p>
-            <p style="margin-top: 0.9rem;">We usually reply within 1 business day.</p>
+            <p style="margin-top: 0.9rem;">You keep the revenue while AI helps support the business operations.</p>
           </div>
 
-          <form id="contactForm">
+          <form id="contactForm" action="mailto:saiddalmazroei88@gmail.com" method="POST" enctype="text/plain">
             <label>
               Business name
               <input type="text" name="businessName" placeholder="Your business name" required />
@@ -360,10 +360,22 @@
     <script>
       const form = document.getElementById("contactForm");
       const formNote = document.getElementById("formNote");
+
       form.addEventListener("submit", function (event) {
         event.preventDefault();
-        formNote.textContent = "Thanks! We’ll reach out shortly with your custom plan.";
-        form.reset();
+
+        const data = new FormData(form);
+        const subject = encodeURIComponent("SmartSites AI Booking Request");
+        const body = encodeURIComponent(
+          `Business Name: ${data.get("businessName")}
+Email: ${data.get("email")}
+Business Type: ${data.get("businessType")}
+Project Details: ${data.get("details")}`
+        );
+
+        const mailto = `mailto:saiddalmazroei88@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = mailto;
+        formNote.textContent = "Your email client should open so you can send the request to saiddalmazroei88@gmail.com.";
       });
     </script>
   </body>
