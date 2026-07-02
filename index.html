@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartSites AI | AI-Powered Websites for Small Businesses</title>
+    <title>GaragePilot AI | AI Receptionist for Car Garages</title>
     <meta
       name="description"
-      content="SmartSites AI creates modern, mobile-friendly websites with a premium gold and white brand experience."
+      content="GaragePilot AI gives car garages a premium AI receptionist that answers WhatsApp, books appointments, and turns more inquiries into customers."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,15 +16,16 @@
     />
     <style>
       :root {
-        --bg: #fffaf0;
-        --surface: #ffffff;
-        --surface-soft: #fff7df;
-        --text: #1f1a11;
-        --muted: #6d6146;
-        --accent: #cda63b;
-        --accent-strong: #a87f16;
-        --border: #e9dcc0;
-        --shadow: 0 16px 45px rgba(168, 127, 22, 0.14);
+        --bg: #07111d;
+        --surface: #0c1b2b;
+        --surface-soft: #10253a;
+        --text: #f5f9ff;
+        --muted: #95aac8;
+        --accent: #2f7cff;
+        --accent-strong: #5ea2ff;
+        --accent-soft: #d9ebff;
+        --border: rgba(255,255,255,0.11);
+        --shadow: 0 18px 55px rgba(6, 20, 37, 0.35);
       }
 
       * { box-sizing: border-box; }
@@ -32,36 +33,31 @@
       body {
         margin: 0;
         font-family: "Inter", sans-serif;
-        background: linear-gradient(135deg, #fffdf8 0%, var(--bg) 100%);
+        background: radial-gradient(circle at top left, #15304d 0%, var(--bg) 40%, #030811 100%);
         color: var(--text);
         line-height: 1.6;
       }
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; display: block; }
-      .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+      .container { width: min(1140px, calc(100% - 2rem)); margin: 0 auto; }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 10;
-        background: rgba(255, 250, 240, 0.9);
-        backdrop-filter: blur(14px);
+        z-index: 20;
+        background: rgba(7, 17, 29, 0.85);
+        backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--border);
       }
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 0;
-      }
+      .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
       .brand { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.04em; }
       .brand span { color: var(--accent-strong); }
       .nav-links { display: flex; gap: 1.25rem; color: var(--muted); font-size: 0.95rem; }
       .nav-links a:hover { color: var(--text); }
 
       .hero { padding: 5rem 0 4rem; }
-      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; }
-      .hero h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.08; margin: 0 0 1rem; }
+      .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 2rem; align-items: center; }
+      .hero h1 { font-size: clamp(2.2rem, 4vw, 3.85rem); line-height: 1.08; margin: 0 0 1rem; }
       .hero p { color: var(--muted); font-size: 1.05rem; margin: 0 0 1.7rem; max-width: 620px; }
       .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
       .btn {
@@ -69,74 +65,64 @@
         align-items: center;
         justify-content: center;
         border-radius: 999px;
-        padding: 0.9rem 1.35rem;
+        padding: 0.95rem 1.4rem;
         font-weight: 700;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        border: none;
+        cursor: pointer;
       }
       .btn:hover { transform: translateY(-2px); }
-      .btn-primary {
-        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-        color: #fffdf8;
-        box-shadow: var(--shadow);
-      }
-      .btn-secondary {
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-      }
+      .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: white; box-shadow: var(--shadow); }
+      .btn-secondary { background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border); }
 
       .hero-card {
-        background: linear-gradient(145deg, #fffdf8, var(--surface-soft));
+        background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
         border: 1px solid var(--border);
         border-radius: 24px;
-        padding: 1.2rem;
+        padding: 1.25rem;
         box-shadow: var(--shadow);
       }
-      .hero-card .panel {
+      .chat-window {
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 18px;
         padding: 1rem;
-        margin-top: 1rem;
+        min-height: 320px;
       }
-      .mini-row { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: 0.93rem; }
-      .metric { font-size: 1.6rem; font-weight: 800; color: var(--text); margin-bottom: 0.25rem; }
+      .bubble { padding: 0.75rem 0.9rem; border-radius: 14px; margin-bottom: 0.7rem; max-width: 88%; font-size: 0.95rem; }
+      .bubble.user { background: rgba(95, 162, 255, 0.18); margin-left: auto; }
+      .bubble.ai { background: rgba(255,255,255,0.07); }
+      .status-row { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.9rem; }
+      .metric { font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 0.2rem; }
 
       section { padding: 4.5rem 0; }
       .section-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 2rem; }
       .section-title h2 { font-size: 1.5rem; margin: 0; }
       .section-title p { color: var(--muted); margin: 0; }
-      .card-grid, .pricing-grid, .portfolio-grid { display: grid; gap: 1.2rem; }
-      .card-grid, .pricing-grid, .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .card, .portfolio-item {
-        background: var(--surface);
+      .grid-3, .pricing-grid, .testimonial-grid { display: grid; gap: 1.2rem; }
+      .grid-3, .pricing-grid, .testimonial-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .card, .price-card, .testimonial-card, .faq-card {
+        background: rgba(255,255,255,0.04);
         border: 1px solid var(--border);
         border-radius: 20px;
         padding: 1.3rem;
         box-shadow: var(--shadow);
       }
-      .card h3, .portfolio-item h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
-      .card p, .portfolio-item p, .price-card p, .contact-box p, form p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+      .card h3, .price-card h3, .testimonial-card h3 { margin: 0 0 0.45rem; font-size: 1.05rem; }
+      .card p, .price-card p, .testimonial-card p, .faq-card p, .contact-box p, form p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+      .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(95,162,255,0.15); color: var(--accent-soft); margin-bottom: 0.85rem; font-weight: 800; }
 
-      .price-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 1.5rem;
-        position: relative;
-        box-shadow: var(--shadow);
-      }
-      .price-card.featured { border-color: var(--accent); background: linear-gradient(145deg, #fff8e3, #fffdf8); }
+      .price-card.featured { border-color: var(--accent-strong); background: linear-gradient(145deg, rgba(47,124,255,0.15), rgba(255,255,255,0.04)); }
       .tag { display: inline-block; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong); margin-bottom: 0.8rem; }
       .price { font-size: 2rem; font-weight: 800; margin: 0.2rem 0 0.4rem; }
       .price-card ul { padding: 0; margin: 1rem 0 1.3rem; list-style: none; color: var(--muted); }
       .price-card li { margin: 0.4rem 0; }
-      .portfolio-item .thumb { height: 170px; border-radius: 14px; background: linear-gradient(130deg, rgba(205,166,59,0.35), rgba(255,255,255,0.9)); }
-      .thumb-content { padding-top: 1rem; }
 
+      .faq-card { display: grid; gap: 0.4rem; }
+      .faq-card strong { font-size: 1rem; }
       .contact-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.3rem; }
       .contact-box, form {
-        background: var(--surface);
+        background: rgba(255,255,255,0.04);
         border: 1px solid var(--border);
         border-radius: 24px;
         padding: 1.3rem;
@@ -144,15 +130,17 @@
       }
       form { display: grid; gap: 0.9rem; }
       label { display: grid; gap: 0.35rem; font-size: 0.95rem; }
-      input, select, textarea {
-        width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 0.9rem; font: inherit; color: var(--text); background: #fffdf8;
+      input, textarea {
+        width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 0.9rem; font: inherit; color: var(--text); background: rgba(255,255,255,0.05);
       }
       textarea { min-height: 110px; resize: vertical; }
-      .form-note { color: var(--accent-strong); font-size: 0.95rem; min-height: 1.2rem; }
       footer { padding: 1.5rem 0 2.5rem; color: var(--muted); text-align: center; }
+      .footer-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 0.7rem 0; color: var(--text); }
+      .socials { display: flex; justify-content: center; gap: 0.8rem; margin-top: 0.75rem; }
+      .socials a { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
 
       @media (max-width: 900px) {
-        .hero-grid, .contact-wrap, .card-grid, .pricing-grid, .portfolio-grid { grid-template-columns: 1fr; }
+        .hero-grid, .contact-wrap, .grid-3, .pricing-grid, .testimonial-grid { grid-template-columns: 1fr; }
       }
       @media (max-width: 640px) {
         .nav-links { display: none; }
@@ -165,11 +153,11 @@
   <body>
     <header class="topbar">
       <div class="container nav">
-        <a href="#" class="brand">SmartSites <span>AI</span></a>
+        <a href="#" class="brand">GaragePilot <span>AI</span></a>
         <nav class="nav-links">
-          <a href="#services">Services</a>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
           <a href="#pricing">Pricing</a>
-          <a href="#portfolio">Portfolio</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -179,55 +167,123 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <h1>AI-Powered Websites for Small Businesses</h1>
-            <p>We build modern, mobile-friendly websites in 24 hours while AI helps run the business operations and you keep the revenue.</p>
+            <h1>Never Miss Another Customer Again</h1>
+            <p>Your AI employee that answers customers 24/7, books appointments, and helps your garage convert more inquiries into paying customers.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Get Your Website</a>
-              <a class="btn btn-secondary" href="#portfolio">See Our Work</a>
+              <a class="btn btn-primary" href="#contact">Book a Free Demo</a>
+              <a class="btn btn-secondary" href="#features">Explore Features</a>
             </div>
           </div>
 
           <div class="hero-card">
-            <div class="mini-row">
+            <div class="status-row">
               <div>
-                <div class="metric">24h</div>
-                <div>Launch-ready sites</div>
+                <div class="metric">24/7</div>
+                <div>Always online</div>
               </div>
               <div>
-                <div class="metric">100%</div>
-                <div>Mobile optimized</div>
+                <div class="metric">98%</div>
+                <div>Reply speed</div>
               </div>
             </div>
-            <div class="panel">
-              <strong>Elegant gold-and-white branding</strong>
-              <p style="margin: 0.4rem 0 0; color: var(--muted);">A premium look designed to make your business feel trusted and modern.</p>
-            </div>
-            <div class="panel">
-              <strong>Fast booking and support</strong>
-              <p style="margin: 0.4rem 0 0; color: var(--muted);">Reach us by email or WhatsApp for your next website project.</p>
+            <div class="chat-window">
+              <div class="bubble user">Hi, I need my car serviced this week. Can you help?</div>
+              <div class="bubble ai">Absolutely. I can help you book an appointment, collect your details, and share our hours and location.</div>
+              <div class="bubble user">What information do you need?</div>
+              <div class="bubble ai">I can collect your name, phone, vehicle make, model, year, and required service in seconds.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services">
+      <section id="features">
         <div class="container">
           <div class="section-title">
-            <h2>Services</h2>
-            <p>Everything you need to launch and grow online.</p>
+            <h2>Features</h2>
+            <p>Premium AI support built for busy garage owners.</p>
           </div>
-          <div class="card-grid">
+          <div class="grid-3">
             <article class="card">
-              <h3>Fast Web Design</h3>
-              <p>Launch a clean, conversion-focused website that feels premium from day one.</p>
+              <div class="icon">WA</div>
+              <h3>AI WhatsApp Receptionist</h3>
+              <p>Your virtual employee answers WhatsApp messages instantly and behaves like a professional receptionist.</p>
             </article>
             <article class="card">
-              <h3>AI Content & SEO</h3>
-              <p>Clear messaging, strong structure, and better visibility for local customers.</p>
+              <div class="icon">📅</div>
+              <h3>Appointment Booking</h3>
+              <p>Books visits, suggests available slots, and confirms appointments without missed calls or delays.</p>
             </article>
             <article class="card">
-              <h3>Mobile Optimization</h3>
-              <p>Every page is responsive, polished, and easy to navigate on any device.</p>
+              <div class="icon">⚡</div>
+              <h3>Instant Replies</h3>
+              <p>Customers receive fast answers any time of day, including after hours and on weekends.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🧾</div>
+              <h3>Customer Information Collection</h3>
+              <p>Collects name, phone number, vehicle make, model, year, and the service needed in a structured way.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🤝</div>
+              <h3>Human Handoff</h3>
+              <p>If a customer needs a personal touch, the conversation is smoothly transferred to your team.</p>
+            </article>
+            <article class="card">
+              <div class="icon">📍</div>
+              <h3>Business Hours & Location Sharing</h3>
+              <p>Shares your hours, location, and directions so customers can reach you without friction.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works">
+        <div class="container">
+          <div class="section-title">
+            <h2>How It Works</h2>
+            <p>From first message to booked service in three simple steps.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon">1</div>
+              <h3>Customer sends a message</h3>
+              <p>Whether it is on WhatsApp or through your contact channels, the AI responds immediately.</p>
+            </article>
+            <article class="card">
+              <div class="icon">2</div>
+              <h3>AI collects the details</h3>
+              <p>It gathers the service request, vehicle info, and contact details while answering common questions.</p>
+            </article>
+            <article class="card">
+              <div class="icon">3</div>
+              <h3>Appointment is booked</h3>
+              <p>The system confirms the booking and escalates to a human when the situation needs personal support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-title">
+            <h2>Why Choose GaragePilot AI</h2>
+            <p>Built to make your garage feel more responsive, organised, and profitable.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon">⏱</div>
+              <h3>Save Time</h3>
+              <p>Stop spending your day answering repetitive messages and missed-call follow-ups.</p>
+            </article>
+            <article class="card">
+              <div class="icon">📈</div>
+              <h3>Increase Conversions</h3>
+              <p>More immediate engagement means more inquiries turn into real bookings.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🛡</div>
+              <h3>Build Trust</h3>
+              <p>Customers receive a polished, dependable experience from the very first message.</p>
             </article>
           </div>
         </div>
@@ -237,76 +293,98 @@
         <div class="container">
           <div class="section-title">
             <h2>Pricing</h2>
-            <p>Simple plans for startups and growing businesses.</p>
+            <p>Flexible plans for independent garages and expanding multi-branch operations.</p>
           </div>
           <div class="pricing-grid">
             <article class="price-card">
               <div class="tag">Starter</div>
-              <h3>Perfect for new businesses</h3>
-              <div class="price">$499</div>
-              <p>A polished foundation to get online quickly.</p>
+              <h3>AED 299/month</h3>
+              <div class="price">Starter</div>
+              <p>Perfect for small garages that want round-the-clock lead capture.</p>
               <ul>
-                <li>• 1-page launch site</li>
-                <li>• Mobile-friendly layout</li>
-                <li>• Contact form included</li>
+                <li>• AI WhatsApp Receptionist</li>
+                <li>• Instant Customer Replies</li>
+                <li>• Basic Appointment Booking</li>
+                <li>• Business Hours & Location</li>
+                <li>• Email Support</li>
               </ul>
-              <a class="btn btn-secondary" href="#contact">Choose Starter</a>
+              <a class="btn btn-secondary" href="#contact">Get Starter</a>
             </article>
             <article class="price-card featured">
-              <div class="tag">Business</div>
-              <h3>Best for growing teams</h3>
-              <div class="price">$999</div>
-              <p>More pages, stronger messaging, and faster conversion.</p>
+              <div class="tag">Most Popular</div>
+              <h3>AED 699/month</h3>
+              <div class="price">Professional</div>
+              <p>Designed for garages that want stronger follow-up and higher conversion rates.</p>
               <ul>
-                <li>• 5-page website</li>
-                <li>• SEO-ready structure</li>
-                <li>• Analytics setup</li>
+                <li>• Everything in Starter</li>
+                <li>• Advanced Appointment Booking</li>
+                <li>• Customer Follow-ups</li>
+                <li>• Lead Collection</li>
+                <li>• Priority Support</li>
+                <li>• Monthly Performance Report</li>
               </ul>
-              <a class="btn btn-primary" href="#contact">Choose Business</a>
+              <a class="btn btn-primary" href="#contact">Choose Professional</a>
             </article>
             <article class="price-card">
-              <div class="tag">Premium</div>
-              <h3>Advanced support and scale</h3>
-              <div class="price">$1,799</div>
-              <p>A premium presence for ambitious brands.</p>
+              <div class="tag">Enterprise</div>
+              <h3>Custom Pricing</h3>
+              <div class="price">Enterprise</div>
+              <p>For larger teams and multi-location garages with advanced requirements.</p>
               <ul>
-                <li>• Custom layouts</li>
-                <li>• Advanced integrations</li>
-                <li>• Priority support</li>
+                <li>• Unlimited Conversations</li>
+                <li>• Custom AI Training</li>
+                <li>• Multiple Branch Support</li>
+                <li>• Dedicated Account Manager</li>
+                <li>• Premium Support</li>
+                <li>• Custom Integrations</li>
               </ul>
-              <a class="btn btn-secondary" href="#contact">Choose Premium</a>
+              <a class="btn btn-secondary" href="#contact">Talk to Sales</a>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="portfolio">
+      <section>
         <div class="container">
           <div class="section-title">
-            <h2>Portfolio</h2>
-            <p>Examples of modern digital experiences we craft.</p>
+            <h2>Frequently Asked Questions</h2>
+            <p>Answers to the questions garage owners ask most.</p>
           </div>
-          <div class="portfolio-grid">
-            <article class="portfolio-item">
-              <div class="thumb"></div>
-              <div class="thumb-content">
-                <h3>BrightLane Studio</h3>
-                <p>Elegant website for a local design boutique with a refined booking flow.</p>
-              </div>
+          <div class="grid-3">
+            <article class="faq-card">
+              <strong>How quickly does it reply?</strong>
+              <p>It responds instantly to incoming WhatsApp messages, even outside business hours.</p>
             </article>
-            <article class="portfolio-item">
-              <div class="thumb"></div>
-              <div class="thumb-content">
-                <h3>Northstar Dental</h3>
-                <p>Professional healthcare website focused on trust, clarity, and conversions.</p>
-              </div>
+            <article class="faq-card">
+              <strong>Can it book appointments?</strong>
+              <p>Yes. It can offer available slots, confirm bookings, and hand off to your team when needed.</p>
             </article>
-            <article class="portfolio-item">
-              <div class="thumb"></div>
-              <div class="thumb-content">
-                <h3>Harbor Home Co.</h3>
-                <p>Modern storefront experience for a lifestyle brand with strong visual storytelling.</p>
-              </div>
+            <article class="faq-card">
+              <strong>Can it work with my existing setup?</strong>
+              <p>Yes. We can tailor the experience for your workflow, hours, location, and service menu.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-title">
+            <h2>Customer Testimonials</h2>
+            <p>Trusted by garages that want faster replies and more booked jobs.</p>
+          </div>
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <h3>“We stopped missing weekend inquiries.”</h3>
+              <p>GaragePilot AI answered every message after hours and we saw more bookings in the first month.</p>
+            </article>
+            <article class="testimonial-card">
+              <h3>“It feels like a real receptionist.”</h3>
+              <p>Customers loved how quickly they got a response and how easy it was to book an appointment.</p>
+            </article>
+            <article class="testimonial-card">
+              <h3>“More leads, less admin.”</h3>
+              <p>Our team spends less time chasing customers and more time on the work that matters.</p>
             </article>
           </div>
         </div>
@@ -315,41 +393,62 @@
       <section id="contact">
         <div class="container contact-wrap">
           <div class="contact-box">
-            <h2>Let’s build something polished</h2>
-            <p>Share your business details and we’ll follow up with a practical plan for your website and business setup.</p>
-            <p style="margin-top: 0.9rem;"><strong>Email:</strong> saiddalmazroei88@gmail.com</p>
-            <p><strong>WhatsApp for booking:</strong> 0547867882</p>
-            <p style="margin-top: 0.9rem;">The form now sends automatically to your email address when submitted.</p>
+            <h2>Book a Free Demo</h2>
+            <p>See how GaragePilot AI can help your garage respond faster, capture more leads, and reduce missed opportunities.</p>
+            <p style="margin-top: 0.9rem;"><strong>Email:</strong> <a href="mailto:saiddalmazroei88@gmail.com">saiddalmazroei88@gmail.com</a></p>
+            <p><strong>Phone / WhatsApp:</strong> +971 54 786 7882</p>
           </div>
 
-          <form id="contactForm" action="https://formsubmit.co/saiddalmazroei88@gmail.com" method="POST" target="_blank">
-            <input type="hidden" name="_subject" value="SmartSites AI Booking Request" />
+          <form action="https://formsubmit.co/saiddalmazroei88@gmail.com" method="POST" target="_blank">
+            <input type="hidden" name="_subject" value="GaragePilot AI Demo Request" />
             <input type="hidden" name="_captcha" value="false" />
             <label>
-              Business name
-              <input type="text" name="businessName" placeholder="Your business name" required />
+              Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Garage Name
+              <input type="text" name="garageName" placeholder="Garage name" required />
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" name="phone" placeholder="+971 50 000 0000" required />
             </label>
             <label>
               Email
               <input type="email" name="email" placeholder="you@example.com" required />
             </label>
             <label>
-              Business type
-              <select name="businessType" required>
-                <option value="">Select one</option>
-                <option>Retail</option>
-                <option>Service</option>
-                <option>Consulting</option>
-                <option>Restaurant</option>
-                <option>Other</option>
-              </select>
+              Message
+              <textarea name="message" placeholder="Tell us about your garage and what you want to improve"></textarea>
             </label>
-            <label>
-              Project details
-              <textarea name="details" placeholder="Tell us what you need"></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit">Request a Website</button>
-            <div class="form-note" id="formNote"></div>
+            <button class="btn btn-primary" type="submit">Request a Demo</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="brand">GaragePilot <span>AI</span></div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p>hello@garagepilot.ai</p>
+        <p>+971 54 786 7882</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="X">X</a>
+        </div>
+        <p style="margin-top: 0.8rem;">© 2026 GaragePilot AI. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>            <div class="form-note" id="formNote"></div>
           </form>
         </div>
       </section>
@@ -362,6 +461,30 @@
     <script>
       const form = document.getElementById("contactForm");
       const formNote = document.getElementById("formNote");
+      const slides = Array.from(document.querySelectorAll(".hero-slide"));
+      const dots = Array.from(document.querySelectorAll(".slider-dots button"));
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active-dot", i === index);
+        });
+      }
+
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 4000);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
 
       form.addEventListener("submit", function () {
         formNote.textContent = "Sending your request to saiddalmazroei88@gmail.com...";
